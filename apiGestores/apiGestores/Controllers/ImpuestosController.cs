@@ -34,12 +34,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdImpuesto}", Name = "GetImpuestos")]
-        public ActionResult Get(int IdImpuesto)
+        [HttpGet("{ImpCodigo}", Name = "GetImpuestos")]
+        public ActionResult Get(int ImpCodigo)
         {
             try
             {
-                var impuestos = context.Impuestos.FirstOrDefault(g => g.IdImpuesto == IdImpuesto);
+                var impuestos = context.Impuestos.FirstOrDefault(g => g.ImpCodigo == ImpCodigo);
                 return Ok(impuestos);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace apiGestores.Controllers
             {
                 context.Impuestos.Add(impuestos);
                 context.SaveChanges();
-                return CreatedAtRoute("GetImpuestos", new { IdImpuesto = impuestos.IdImpuesto }, impuestos);
+                return CreatedAtRoute("GetImpuestos", new { ImpCodigo = impuestos.ImpCodigo }, impuestos);
             }
             catch (Exception ex)
             {
@@ -65,16 +65,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdImpuesto}")]
-        public ActionResult Put(int IdImpuesto, [FromBody] Impuestos impuestos)
+        [HttpPut("{ImpCodigo}")]
+        public ActionResult Put(int ImpCodigo, [FromBody] Impuestos impuestos)
         {
             try
             {
-                if (impuestos.IdImpuesto == IdImpuesto)
+                if (impuestos.ImpCodigo == ImpCodigo)
                 {
                     context.Entry(impuestos).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetImpuestos", new { IdImpuesto = impuestos.IdImpuesto }, impuestos);
+                    return CreatedAtRoute("GetImpuestos", new { ImpCodigo = impuestos.ImpCodigo }, impuestos);
                 }
                 else
                 {
@@ -88,17 +88,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdImpuesto}")]
-        public ActionResult Delete(int IdImpuesto)
+        [HttpDelete("{ImpCodigo}")]
+        public ActionResult Delete(int ImpCodigo)
         {
             try
             {
-                var impuesto = context.Impuestos.FirstOrDefault(g => g.IdImpuesto == IdImpuesto);
+                var impuesto = context.Impuestos.FirstOrDefault(g => g.ImpCodigo == ImpCodigo);
                 if (impuesto != null)
                 {
                     context.Impuestos.Remove(impuesto);
                     context.SaveChanges();
-                    return Ok(IdImpuesto);
+                    return Ok(ImpCodigo);
                 }
                 else
                 {

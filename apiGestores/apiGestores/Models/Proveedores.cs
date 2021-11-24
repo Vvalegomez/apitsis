@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apiGestores.Models
 {
-    public class Proveedores
+    public partial class Proveedores
     {
-        [Key]
-        public int IdProveedor { get; set; }
-        public string NombreEmpresa { get; set; }
-        public string SitioWeb { get; set; }
-        public string Telefono { get; set; }
-        public string NombreContacto { get; set; }
-        public string ApellidoContacto { get; set; }
-        public string Email { get; set; }
-        public string Calle { get; set; }
-        public string CP { get; set; }
+        public Proveedores()
+        {
+            ArticulosDet = new HashSet<ArticulosDet>();
+        }
+
+        public int ProveCodigo { get; set; }
+        public string ProveDenom { get; set; }
+        public string ProveWebsite { get; set; }
+        public string ProveTelefono { get; set; }
+        public string ProveMail { get; set; }
+        public string ProveDireccion { get; set; }
+        public string ProveCp { get; set; }
+        public int CiuCodigo { get; set; }
+        public int EstaCodigo { get; set; }
+
+        public virtual Ciudades CiuCodigoNavigation { get; set; }
+        public virtual Estados EstaCodigoNavigation { get; set; }
+        public virtual ICollection<ArticulosDet> ArticulosDet { get; set; }
     }
 }

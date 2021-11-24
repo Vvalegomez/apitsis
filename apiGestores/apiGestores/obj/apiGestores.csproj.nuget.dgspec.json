@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Joaquin Auce\\Desktop\\ddd\\apiGestores\\apiGestores\\apiGestores.csproj": {}
+    "D:\\Documents\\GitHub\\apitsis\\apiGestores\\apiGestores\\apiGestores.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Joaquin Auce\\Desktop\\ddd\\apiGestores\\apiGestores\\apiGestores.csproj": {
+    "D:\\Documents\\GitHub\\apitsis\\apiGestores\\apiGestores\\apiGestores.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Joaquin Auce\\Desktop\\ddd\\apiGestores\\apiGestores\\apiGestores.csproj",
+        "projectUniqueName": "D:\\Documents\\GitHub\\apitsis\\apiGestores\\apiGestores\\apiGestores.csproj",
         "projectName": "apiGestores",
-        "projectPath": "C:\\Users\\Joaquin Auce\\Desktop\\ddd\\apiGestores\\apiGestores\\apiGestores.csproj",
-        "packagesPath": "C:\\Users\\Joaquin Auce\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Joaquin Auce\\Desktop\\ddd\\apiGestores\\apiGestores\\obj\\",
+        "projectPath": "D:\\Documents\\GitHub\\apitsis\\apiGestores\\apiGestores\\apiGestores.csproj",
+        "packagesPath": "C:\\Users\\octav\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\GitHub\\apitsis\\apiGestores\\apiGestores\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Joaquin Auce\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\octav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,7 +48,19 @@
               "target": "Package",
               "version": "[3.1.7, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[3.1.7, )"
             }
@@ -59,6 +75,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.1.10, 3.1.10]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.21, 3.1.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.1.0, 3.1.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -67,7 +101,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

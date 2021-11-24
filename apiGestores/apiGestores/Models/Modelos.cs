@@ -3,16 +3,15 @@ using System.Collections.Generic;
 
 namespace apiGestores.Models
 {
-    public partial class Fabricantes
+    public partial class Modelos
     {
-        public Fabricantes()
+        public Modelos()
         {
             ArticulosDet = new HashSet<ArticulosDet>();
         }
 
-        public int FabCodigo { get; set; }
-        public string FabDenom { get; set; }
-        public DateTime? FabFeccar { get; set; }
+        public int ModCodigo { get; set; }
+        public string ModDenom { get; set; }
         public int EstaCodigo { get; set; }
 
         public virtual Estados EstaCodigoNavigation { get; set; }

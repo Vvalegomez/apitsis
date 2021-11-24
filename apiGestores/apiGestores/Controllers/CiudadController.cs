@@ -25,7 +25,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Ciudad.ToList());
+                return Ok(context.Ciudades.ToList());
             }
             catch (Exception ex)
             {
@@ -34,12 +34,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{idCiudad}", Name = "GetCiudad")]
-        public ActionResult Get(int idCiudad)
+        [HttpGet("{CiuCodigo}", Name = "GetCiudad")]
+        public ActionResult Get(int CiuCodigo)
         {
             try
             {
-                var ciudad = context.Ciudad.FirstOrDefault(g => g.idCiudad == idCiudad);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.CiuCodigo == CiuCodigo);
                 return Ok(ciudad);
             }
             catch (Exception ex)
@@ -50,13 +50,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Ciudad ciudad)
+        public ActionResult Post([FromBody] Ciudades ciudad)
         {
             try
             {
-                context.Ciudad.Add(ciudad);
+                context.Ciudades.Add(ciudad);
                 context.SaveChanges();
-                return CreatedAtRoute("GetCiudad", new { idCiudad = ciudad.idCiudad }, ciudad);
+                return CreatedAtRoute("GetCiudad", new { CiuCodigo = ciudad.CiuCodigo }, ciudad);
             }
             catch (Exception ex)
             {
@@ -65,16 +65,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{idCiudad}")]
-        public ActionResult Put(int idCiudad, [FromBody] Ciudad ciudad)
+        [HttpPut("{CiuCodigo}")]
+        public ActionResult Put(int CiuCodigo, [FromBody] Ciudades ciudad)
         {
             try
             {
-                if (ciudad.idCiudad == idCiudad)
+                if (ciudad.CiuCodigo == CiuCodigo)
                 {
                     context.Entry(ciudad).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetGestor", new { idCiudad = ciudad.idCiudad }, ciudad);
+                    return CreatedAtRoute("GetGestor", new { CiuCodigo = ciudad.CiuCodigo }, ciudad);
                 }
                 else
                 {
@@ -88,17 +88,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{idCiudad}")]
-        public ActionResult Delete(int idCiudad)
+        [HttpDelete("{CiuCodigo}")]
+        public ActionResult Delete(int CiuCodigo)
         {
             try
             {
-                var ciudad = context.Ciudad.FirstOrDefault(g => g.idCiudad == idCiudad);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.CiuCodigo == CiuCodigo);
                 if (ciudad != null)
                 {
-                    context.Ciudad.Remove(ciudad);
+                    context.Ciudades.Remove(ciudad);
                     context.SaveChanges();
-                    return Ok(idCiudad);
+                    return Ok(CiuCodigo);
                 }
                 else
                 {

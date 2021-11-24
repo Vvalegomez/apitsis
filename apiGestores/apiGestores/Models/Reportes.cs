@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apiGestores.Models
 {
-    public class Reportes
+    public partial class Reportes
     {
-        [Key]
-        public int IdReporte { get; set; }
-        public DateTime FechaReporte { get; set; }
-        public string TipoReporte { get; set; }
+        public int RepCodigo { get; set; }
+        public DateTime RepFecha { get; set; }
+        public int? ReptipoCodigo { get; set; }
+        public string RepObserv { get; set; }
+        public int SucCodigo { get; set; }
 
+        public virtual ReportesTipos ReptipoCodigoNavigation { get; set; }
+        public virtual Sucursales SucCodigoNavigation { get; set; }
+        public virtual ReportesDet ReportesDet { get; set; }
     }
 }

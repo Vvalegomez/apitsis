@@ -34,12 +34,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdUsuario}", Name = "GetUsuarios")]
-        public ActionResult Get(int IdUsuario)
+        [HttpGet("{UsuCodigo}", Name = "GetUsuarios")]
+        public ActionResult Get(int UsuCodigo)
         {
             try
             {
-                var usuarios = context.Usuarios.FirstOrDefault(g => g.IdUsuario == IdUsuario);
+                var usuarios = context.Usuarios.FirstOrDefault(g => g.UsuCodigo == UsuCodigo);
                 return Ok(usuarios);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace apiGestores.Controllers
             {
                 context.Usuarios.Add(usuarios);
                 context.SaveChanges();
-                return CreatedAtRoute("GetUsuarios", new { IdUsuario = usuarios.IdUsuario }, usuarios);
+                return CreatedAtRoute("GetUsuarios", new { UsuCodigo = usuarios.UsuCodigo }, usuarios);
             }
             catch (Exception ex)
             {
@@ -65,16 +65,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdUsuario}")]
-        public ActionResult Put(int IdUsuario, [FromBody] Usuarios usuarios)
+        [HttpPut("{UsuCodigo}")]
+        public ActionResult Put(int UsuCodigo, [FromBody] Usuarios usuarios)
         {
             try
             {
-                if (usuarios.IdUsuario == IdUsuario)
+                if (usuarios.UsuCodigo == UsuCodigo)
                 {
                     context.Entry(usuarios).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetUsuarios", new { IdUsuario = usuarios.IdUsuario }, usuarios);
+                    return CreatedAtRoute("GetUsuarios", new { UsuCodigo = usuarios.UsuCodigo }, usuarios);
                 }
                 else
                 {
@@ -88,17 +88,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdUsuario}")]
-        public ActionResult Delete(int IdUsuario)
+        [HttpDelete("{UsuCodigo}")]
+        public ActionResult Delete(int UsuCodigo)
         {
             try
             {
-                var usuarios = context.Usuarios.FirstOrDefault(g => g.IdUsuario == IdUsuario);
+                var usuarios = context.Usuarios.FirstOrDefault(g => g.UsuCodigo == UsuCodigo);
                 if (usuarios != null)
                 {
                     context.Usuarios.Remove(usuarios);
                     context.SaveChanges();
-                    return Ok(IdUsuario);
+                    return Ok(UsuCodigo);
                 }
                 else
                 {

@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apiGestores.Models
 {
-    public class Reparaciones
+    public partial class Reparaciones
     {
-        [Key]
-        public int IdReparacion { get; set; }
+        public int RepaCodigo { get; set; }
+        public DateTime RepaFeccar { get; set; }
+        public DateTime RepaFeccie { get; set; }
+        public int CueCodigo { get; set; }
+        public int EstaCodigo { get; set; }
+        public string RepaObserv { get; set; }
 
-        public string EstadoReparacion { get; set; }
-        public string Descripcion { get; set; }
-        public string AccionRealizar { get; set; }
-        public int ManoDeObra { get; set; }
-        public int Precio { get; set; }
-        public int IdProductoRep_FK { get; set; }
-        public int IdUsuario_FK { get; set; }
+        public virtual Cuentas CueCodigoNavigation { get; set; }
+        public virtual Estados EstaCodigoNavigation { get; set; }
+        public virtual ReparacionesDet ReparacionesDet { get; set; }
     }
 }

@@ -36,12 +36,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdReparacion}", Name = "GetReparaciones")]
-        public ActionResult Get(int IdReparacion)
+        [HttpGet("{RepaCodigo}", Name = "GetReparaciones")]
+        public ActionResult Get(int RepaCodigo)
         {
             try
             {
-                var reparaciones = context.Reparaciones.FirstOrDefault(g => g.IdReparacion == IdReparacion);
+                var reparaciones = context.Reparaciones.FirstOrDefault(g => g.RepaCodigo == RepaCodigo);
                 return Ok(reparaciones);
             }
             catch (Exception ex)
@@ -58,7 +58,7 @@ namespace apiGestores.Controllers
             {
                 context.Reparaciones.Add(reparaciones);
                 context.SaveChanges();
-                return CreatedAtRoute("GetReparaciones", new { IdReparacion = reparaciones.IdReparacion }, reparaciones);
+                return CreatedAtRoute("GetReparaciones", new { RepaCodigo = reparaciones.RepaCodigo }, reparaciones);
             }
             catch (Exception ex)
             {
@@ -67,16 +67,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdReparacion}")]
-        public ActionResult Put(int IdReparacion, [FromBody] Reparaciones reparaciones)
+        [HttpPut("{RepaCodigo}")]
+        public ActionResult Put(int RepaCodigo, [FromBody] Reparaciones reparaciones)
         {
             try
             {
-                if (reparaciones.IdReparacion == IdReparacion)
+                if (reparaciones.RepaCodigo == RepaCodigo)
                 {
                     context.Entry(reparaciones).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetReparaciones", new { IdReparacion = reparaciones.IdReparacion }, reparaciones);
+                    return CreatedAtRoute("GetReparaciones", new { RepaCodigo = reparaciones.RepaCodigo }, reparaciones);
                 }
                 else
                 {
@@ -90,17 +90,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdReparacion}")]
-        public ActionResult Delete(int IdReparacion)
+        [HttpDelete("{RepaCodigo}")]
+        public ActionResult Delete(int RepaCodigo)
         {
             try
             {
-                var reparaciones = context.Reparaciones.FirstOrDefault(g => g.IdReparacion == IdReparacion);
+                var reparaciones = context.Reparaciones.FirstOrDefault(g => g.RepaCodigo == RepaCodigo);
                 if (reparaciones != null)
                 {
                     context.Reparaciones.Remove(reparaciones);
                     context.SaveChanges();
-                    return Ok(IdReparacion);
+                    return Ok(RepaCodigo);
                 }
                 else
                 {

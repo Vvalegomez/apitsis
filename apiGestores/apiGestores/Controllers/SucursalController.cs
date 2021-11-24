@@ -26,7 +26,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Sucursal.ToList());
+                return Ok(context.Sucursales.ToList());
             }
             catch (Exception ex)
             {
@@ -35,12 +35,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdSucursal}", Name = "GetSucursales")]
-        public ActionResult Get(int IdSucursal)
+        [HttpGet("{SucCodigo}", Name = "GetSucursales")]
+        public ActionResult Get(int SucCodigo)
         {
             try
             {
-                var sucursal = context.Sucursal.FirstOrDefault(g => g.IdSucursal == IdSucursal);
+                var sucursal = context.Sucursales.FirstOrDefault(g => g.SucCodigo == SucCodigo);
                 return Ok(sucursal);
             }
             catch (Exception ex)
@@ -51,13 +51,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Sucursal sucursal)
+        public ActionResult Post([FromBody] Sucursales sucursal)
         {
             try
             {
-                context.Sucursal.Add(sucursal);
+                context.Sucursales.Add(sucursal);
                 context.SaveChanges();
-                return CreatedAtRoute("GetSucursales", new { IdSucursal = sucursal.IdSucursal }, sucursal);
+                return CreatedAtRoute("GetSucursales", new { SucCodigo = sucursal.SucCodigo }, sucursal);
             }
             catch (Exception ex)
             {
@@ -66,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdSucursal}")]
-        public ActionResult Put(int IdSucursal, [FromBody] Sucursal sucursal)
+        [HttpPut("{SucCodigo}")]
+        public ActionResult Put(int SucCodigo, [FromBody] Sucursales sucursal)
         {
             try
             {
-                if (sucursal.IdSucursal == IdSucursal)
+                if (sucursal.SucCodigo == SucCodigo)
                 {
                     context.Entry(sucursal).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetSucursales", new { IdSucursal = sucursal.IdSucursal }, sucursal);
+                    return CreatedAtRoute("GetSucursales", new { SucCodigo = sucursal.SucCodigo }, sucursal);
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdSucursal}")]
-        public ActionResult Delete(int IdSucursal)
+        [HttpDelete("{SucCodigo}")]
+        public ActionResult Delete(int SucCodigo)
         {
             try
             {
-                var sucursal = context.Sucursal.FirstOrDefault(g => g.IdSucursal == IdSucursal);
+                var sucursal = context.Sucursales.FirstOrDefault(g => g.SucCodigo == SucCodigo);
                 if (sucursal != null)
                 {
-                    context.Sucursal.Remove(sucursal);
+                    context.Sucursales.Remove(sucursal);
                     context.SaveChanges();
-                    return Ok(IdSucursal);
+                    return Ok(SucCodigo);
                 }
                 else
                 {

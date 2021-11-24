@@ -34,12 +34,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdFabricante}", Name = "GetFabricantes")]
-        public ActionResult Get(int IdFabricante)
+        [HttpGet("{FabCodigo}", Name = "GetFabricantes")]
+        public ActionResult Get(int FabCodigo)
         {
             try
             {
-                var fabricantes = context.Fabricantes.FirstOrDefault(g => g.IdFabricante == IdFabricante);
+                var fabricantes = context.Fabricantes.FirstOrDefault(g => g.FabCodigo == FabCodigo);
                 return Ok(fabricantes);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace apiGestores.Controllers
             {
                 context.Fabricantes.Add(fabricantes);
                 context.SaveChanges();
-                return CreatedAtRoute("GetFabricantes", new { IdFabricante = fabricantes.IdFabricante }, fabricantes);
+                return CreatedAtRoute("GetFabricantes", new { FabCodigo = fabricantes.FabCodigo }, fabricantes);
             }
             catch (Exception ex)
             {
@@ -65,16 +65,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdFabricante}")]
-        public ActionResult Put(int IdFabricante, [FromBody] Fabricantes fabricantes)
+        [HttpPut("{FabCodigo}")]
+        public ActionResult Put(int FabCodigo, [FromBody] Fabricantes fabricantes)
         {
             try
             {
-                if (fabricantes.IdFabricante == IdFabricante)
+                if (fabricantes.FabCodigo == FabCodigo)
                 {
                     context.Entry(fabricantes).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetFabricantes", new { IdFabricante = fabricantes.IdFabricante }, fabricantes);
+                    return CreatedAtRoute("GetFabricantes", new { FabCodigo = fabricantes.FabCodigo }, fabricantes);
                 }
                 else
                 {
@@ -88,17 +88,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdFabricante}")]
-        public ActionResult Delete(int IdFabricante)
+        [HttpDelete("{FabCodigo}")]
+        public ActionResult Delete(int FabCodigo)
         {
             try
             {
-                var fabricantes = context.Fabricantes.FirstOrDefault(g => g.IdFabricante == IdFabricante);
+                var fabricantes = context.Fabricantes.FirstOrDefault(g => g.FabCodigo == FabCodigo);
                 if (fabricantes != null)
                 {
                     context.Fabricantes.Remove(fabricantes);
                     context.SaveChanges();
-                    return Ok(IdFabricante);
+                    return Ok(FabCodigo);
                 }
                 else
                 {

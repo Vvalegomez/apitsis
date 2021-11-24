@@ -26,7 +26,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Productos.ToList());
+                return Ok(context.Articulos.ToList());
             }
             catch (Exception ex)
             {
@@ -35,12 +35,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdProducto}", Name = "GetProductos")]
-        public ActionResult Get(int IdProducto)
+        [HttpGet("{ArtCodigo}", Name = "GetProductos")]
+        public ActionResult Get(int ArtCodigo)
         {
             try
             {
-                var productos = context.Productos.FirstOrDefault(g => g.IdProducto == IdProducto);
+                var productos = context.Articulos.FirstOrDefault(g => g.ArtCodigo == ArtCodigo);
                 return Ok(productos);
             }
             catch (Exception ex)
@@ -51,13 +51,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Productos productos)
+        public ActionResult Post([FromBody] Articulos productos)
         {
             try
             {
-                context.Productos.Add(productos);
+                context.Articulos.Add(productos);
                 context.SaveChanges();
-                return CreatedAtRoute("GetProductos", new { IdProducto = productos.IdProducto }, productos);
+                return CreatedAtRoute("GetProductos", new { ArtCodigo = productos.ArtCodigo }, productos);
             }
             catch (Exception ex)
             {
@@ -66,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdProducto}")]
-        public ActionResult Put(int IdProducto, [FromBody] Productos productos)
+        [HttpPut("{ArtCodigo}")]
+        public ActionResult Put(int ArtCodigo, [FromBody] Articulos productos)
         {
             try
             {
-                if (productos.IdProducto == IdProducto)
+                if (productos.ArtCodigo == ArtCodigo)
                 {
                     context.Entry(productos).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetProductos", new { IdProducto = productos.IdProducto }, productos);
+                    return CreatedAtRoute("GetProductos", new { ArtCodigo = productos.ArtCodigo }, productos);
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdProducto}")]
-        public ActionResult Delete(int IdProducto)
+        [HttpDelete("{ArtCodigo}")]
+        public ActionResult Delete(int ArtCodigo)
         {
             try
             {
-                var productos = context.Productos.FirstOrDefault(g => g.IdProducto == IdProducto);
+                var productos = context.Articulos.FirstOrDefault(g => g.ArtCodigo == ArtCodigo);
                 if (productos != null)
                 {
-                    context.Productos.Remove(productos);
+                    context.Articulos.Remove(productos);
                     context.SaveChanges();
-                    return Ok(IdProducto);
+                    return Ok(ArtCodigo);
                 }
                 else
                 {

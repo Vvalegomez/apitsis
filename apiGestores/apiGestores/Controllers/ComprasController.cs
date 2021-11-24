@@ -32,12 +32,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdCompra}", Name = "GetCompras")]
-        public ActionResult Get(int IdCompra)
+        [HttpGet("{ComCodigo}", Name = "GetCompras")]
+        public ActionResult Get(int ComCodigo)
         {
             try
             {
-                var compras = context.Compras.FirstOrDefault(g => g.IdCompra == IdCompra);
+                var compras = context.Compras.FirstOrDefault(g => g.ComCodigo == ComCodigo);
                 return Ok(compras);
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace apiGestores.Controllers
             {
                 context.Compras.Add(compras);
                 context.SaveChanges();
-                return CreatedAtRoute("GetCompras", new { IdCompra = compras.IdCompra }, compras);
+                return CreatedAtRoute("GetCompras", new { ComCodigo = compras.ComCodigo }, compras);
             }
             catch (Exception ex)
             {
@@ -63,16 +63,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdCompra}")]
-        public ActionResult Put(int IdCompra, [FromBody] Compras compras)
+        [HttpPut("{ComCodigo}")]
+        public ActionResult Put(int ComCodigo, [FromBody] Compras compras)
         {
             try
             {
-                if (compras.IdCompra == IdCompra)
+                if (compras.ComCodigo == ComCodigo)
                 {
                     context.Entry(compras).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetCompras", new { IdCompra = compras.IdCompra }, compras);
+                    return CreatedAtRoute("GetCompras", new { ComCodigo = compras.ComCodigo }, compras);
                 }
                 else
                 {
@@ -86,17 +86,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdCompra}")]
-        public ActionResult Delete(int IdCompra)
+        [HttpDelete("{ComCodigo}")]
+        public ActionResult Delete(int ComCodigo)
         {
             try
             {
-                var compras = context.Compras.FirstOrDefault(g => g.IdCompra == IdCompra);
+                var compras = context.Compras.FirstOrDefault(g => g.ComCodigo == ComCodigo);
                 if (compras != null)
                 {
                     context.Compras.Remove(compras);
                     context.SaveChanges();
-                    return Ok(IdCompra);
+                    return Ok(ComCodigo);
                 }
                 else
                 {

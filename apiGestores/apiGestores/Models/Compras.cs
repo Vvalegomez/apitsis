@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apiGestores.Models
 {
-    public class Compras
+    public partial class Compras
     {
-        [Key]
-        public int IdCompra { get; set; }
+        public int ComCodigo { get; set; }
+        public string ComNumerofisico { get; set; }
+        public string ComObserv { get; set; }
+        public DateTime? ComFecha { get; set; }
+        public int? UsuCodigo { get; set; }
 
-        public int NumeroCompra { get; set; }
-        public string Descripcion { get; set; }
-        public DateTime FechaCompra { get; set; }
-        public int IdUsuario_FK { get; set; }
-        public int IdImpuesto_FK { get; set; }
-        public int IdProveedor_FK { get; set; }
+        public virtual Usuarios UsuCodigoNavigation { get; set; }
+        public virtual ComprasDet ComprasDet { get; set; }
     }
 }

@@ -35,12 +35,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdReporte}", Name = "GetReportes")]
-        public ActionResult Get(int IdReporte)
+        [HttpGet("{RepCodigo}", Name = "GetReportes")]
+        public ActionResult Get(int RepCodigo)
         {
             try
             {
-                var reportes = context.Reportes.FirstOrDefault(g => g.IdReporte == IdReporte);
+                var reportes = context.Reportes.FirstOrDefault(g => g.RepCodigo == RepCodigo);
                 return Ok(reportes);
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace apiGestores.Controllers
             {
                 context.Reportes.Add(reportes);
                 context.SaveChanges();
-                return CreatedAtRoute("GetReportes", new { IdReporte = reportes.IdReporte }, reportes);
+                return CreatedAtRoute("GetReportes", new { RepCodigo = reportes.RepCodigo }, reportes);
             }
             catch (Exception ex)
             {
@@ -66,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdReporte}")]
-        public ActionResult Put(int IdReporte, [FromBody] Reportes reportes)
+        [HttpPut("{RepCodigo}")]
+        public ActionResult Put(int RepCodigo, [FromBody] Reportes reportes)
         {
             try
             {
-                if (reportes.IdReporte == IdReporte)
+                if (reportes.RepCodigo == RepCodigo)
                 {
                     context.Entry(reportes).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetReportes", new { IdReporte = reportes.IdReporte }, reportes);
+                    return CreatedAtRoute("GetReportes", new { RepCodigo = reportes.RepCodigo }, reportes);
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdReporte}")]
-        public ActionResult Delete(int IdReporte)
+        [HttpDelete("{RepCodigo}")]
+        public ActionResult Delete(int RepCodigo)
         {
             try
             {
-                var reportes = context.Reportes.FirstOrDefault(g => g.IdReporte == IdReporte);
+                var reportes = context.Reportes.FirstOrDefault(g => g.RepCodigo == RepCodigo);
                 if (reportes != null)
                 {
                     context.Reportes.Remove(reportes);
                     context.SaveChanges();
-                    return Ok(IdReporte);
+                    return Ok(RepCodigo);
                 }
                 else
                 {

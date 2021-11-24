@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace apiGestores.Models
 {
-    public class Impuestos
+    public partial class Impuestos
     {
-        [Key]
-        public int IdImpuesto { get; set; }
-        public string NombreImpuesto { get; set; }
-        public int ValorImpuesto { get; set; }
-        
+        public Impuestos()
+        {
+            ComprasDet = new HashSet<ComprasDet>();
+        }
+
+        public int ImpCodigo { get; set; }
+        public string ImpDenom { get; set; }
+        public int ImpValor { get; set; }
+        public int EstaCodigo { get; set; }
+
+        public virtual Estados EstaCodigoNavigation { get; set; }
+        public virtual ICollection<ComprasDet> ComprasDet { get; set; }
     }
 }

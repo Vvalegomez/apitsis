@@ -35,12 +35,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{IdProveedor}", Name = "GetProveedores")]
-        public ActionResult Get(int IdProveedor)
+        [HttpGet("{ProveCodigo}", Name = "GetProveedores")]
+        public ActionResult Get(int ProveCodigo)
         {
             try
             {
-                var proveedores = context.Proveedores.FirstOrDefault(g => g.IdProveedor == IdProveedor);
+                var proveedores = context.Proveedores.FirstOrDefault(g => g.ProveCodigo == ProveCodigo);
                 return Ok(proveedores);
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace apiGestores.Controllers
             {
                 context.Proveedores.Add(proveedores);
                 context.SaveChanges();
-                return CreatedAtRoute("GetProveedores", new { IdProveedor = proveedores.IdProveedor }, proveedores);
+                return CreatedAtRoute("GetProveedores", new { ProveCodigo = proveedores.ProveCodigo }, proveedores);
             }
             catch (Exception ex)
             {
@@ -66,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{IdProveedor}")]
-        public ActionResult Put(int IdProveedor, [FromBody] Proveedores proveedores)
+        [HttpPut("{ProveCodigo}")]
+        public ActionResult Put(int ProveCodigo, [FromBody] Proveedores proveedores)
         {
             try
             {
-                if (proveedores.IdProveedor == IdProveedor)
+                if (proveedores.ProveCodigo == ProveCodigo)
                 {
                     context.Entry(proveedores).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetProveedores", new { IdProveedor = proveedores.IdProveedor }, proveedores);
+                    return CreatedAtRoute("GetProveedores", new { ProveCodigo = proveedores.ProveCodigo }, proveedores);
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{IdProveedor}")]
-        public ActionResult Delete(int IdProveedor)
+        [HttpDelete("{ProveCodigo}")]
+        public ActionResult Delete(int ProveCodigo)
         {
             try
             {
-                var proveedores = context.Proveedores.FirstOrDefault(g => g.IdProveedor == IdProveedor);
+                var proveedores = context.Proveedores.FirstOrDefault(g => g.ProveCodigo == ProveCodigo);
                 if (proveedores != null)
                 {
                     context.Proveedores.Remove(proveedores);
                     context.SaveChanges();
-                    return Ok(IdProveedor);
+                    return Ok(ProveCodigo);
                 }
                 else
                 {
