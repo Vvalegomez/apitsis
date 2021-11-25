@@ -14,6 +14,7 @@ namespace apiGestores.Models
         public int ArtCodigo { get; set; }
         public string ArtDenom { get; set; }
         public int EstaCodigo { get; set; }
+        public List<ArticulosDet> lista { get; set;}
 
         public virtual Estados EstaCodigoNavigation { get; set; }
         public virtual ArticulosDet ArticulosDet { get; set; }
