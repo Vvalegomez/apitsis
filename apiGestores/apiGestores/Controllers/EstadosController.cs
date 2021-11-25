@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace apiGestores.Controllers
 {
-    public class ProvinciasController : Controller
+    [Route("api/[controller]")]
+    
+    public class EstadosController : Controller
     {
         private readonly AppDbContext context;
-        public ProvinciasController(AppDbContext context)
+        public EstadosController(AppDbContext context)
         {
             this.context = context;
         }
@@ -24,7 +26,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Provincias.ToList());
+                return Ok(context.Estados.ToList());
             }
             catch (Exception ex)
             {
@@ -33,13 +35,13 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{ProvCodigo}", Name = "GetProvincias")]
-        public ActionResult Get(int ProvCodigo)
+        [HttpGet("{EstaCodigo}", Name = "GetEstados")]
+        public ActionResult Get(int EstaCodigo)
         {
             try
             {
-                var provincias = context.Provincias.FirstOrDefault(g => g.ProvCodigo == ProvCodigo);
-                return Ok(provincias);
+                var estados = context.Estados.FirstOrDefault(g => g.EstaCodigo == EstaCodigo);
+                return Ok(estados);
             }
             catch (Exception ex)
             {
@@ -49,13 +51,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Provincias provincias)
+        public ActionResult Post([FromBody] Estados estados)
         {
             try
             {
-                context.Provincias.Add(provincias);
+                context.Estados.Add(estados);
                 context.SaveChanges();
-                return CreatedAtRoute("GetProvincias", new { ProvCodigo = provincias.ProvCodigo }, provincias);
+                return CreatedAtRoute("GetEstados", new { EstaCodigo = estados.EstaCodigo }, estados);
             }
             catch (Exception ex)
             {
@@ -64,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{ProvCodigo}")]
-        public ActionResult Put(int ProvCodigo, [FromBody] Provincias provincias)
+        [HttpPut("{EstaCodigo}")]
+        public ActionResult Put(int EstaCodigo, [FromBody] Estados estados)
         {
             try
             {
-                if (provincias.ProvCodigo == ProvCodigo)
+                if (estados.EstaCodigo == EstaCodigo)
                 {
-                    context.Entry(provincias).State = EntityState.Modified;
+                    context.Entry(estados).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetProvincias", new { ProvCodigo = provincias.ProvCodigo }, provincias);
+                    return CreatedAtRoute("GetEstados", new { EstaCodigo = estados.EstaCodigo }, estados);
                 }
                 else
                 {
@@ -87,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{ProvCodigo}")]
-        public ActionResult Delete(int ProvCodigo)
+        [HttpDelete("{EstaCodigo}")]
+        public ActionResult Delete(int EstaCodigo)
         {
             try
             {
-                var provincias = context.Provincias.FirstOrDefault(g => g.ProvCodigo == ProvCodigo);
-                if (provincias != null)
+                var estados = context.Estados.FirstOrDefault(g => g.EstaCodigo == EstaCodigo);
+                if (estados != null)
                 {
-                    context.Provincias.Remove(provincias);
+                    context.Estados.Remove(estados);
                     context.SaveChanges();
-                    return Ok(ProvCodigo);
+                    return Ok(EstaCodigo);
                 }
                 else
                 {

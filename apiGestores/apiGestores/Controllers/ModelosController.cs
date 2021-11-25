@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 
 namespace apiGestores.Controllers
 {
-    public class ProvinciasController : Controller
+    [Route("api/[controller]")]
+    
+    public class ModelosController : Controller
     {
         private readonly AppDbContext context;
-        public ProvinciasController(AppDbContext context)
+        public ModelosController(AppDbContext context)
         {
             this.context = context;
         }
@@ -24,7 +26,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Provincias.ToList());
+                return Ok(context.Modelos.ToList());
             }
             catch (Exception ex)
             {
@@ -33,13 +35,13 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{ProvCodigo}", Name = "GetProvincias")]
-        public ActionResult Get(int ProvCodigo)
+        [HttpGet("{ModCodigo}", Name = "GetModelos")]
+        public ActionResult Get(int ModCodigo)
         {
             try
             {
-                var provincias = context.Provincias.FirstOrDefault(g => g.ProvCodigo == ProvCodigo);
-                return Ok(provincias);
+                var modelos = context.Modelos.FirstOrDefault(g => g.ModCodigo == ModCodigo);
+                return Ok(modelos);
             }
             catch (Exception ex)
             {
@@ -49,13 +51,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Provincias provincias)
+        public ActionResult Post([FromBody] Modelos modelos)
         {
             try
             {
-                context.Provincias.Add(provincias);
+                context.Modelos.Add(modelos);
                 context.SaveChanges();
-                return CreatedAtRoute("GetProvincias", new { ProvCodigo = provincias.ProvCodigo }, provincias);
+                return CreatedAtRoute("GetModelos", new { ModCodigo = modelos.ModCodigo }, modelos);
             }
             catch (Exception ex)
             {
@@ -64,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{ProvCodigo}")]
-        public ActionResult Put(int ProvCodigo, [FromBody] Provincias provincias)
+        [HttpPut("{ModCodigo}")]
+        public ActionResult Put(int ModCodigo, [FromBody] Modelos modelos)
         {
             try
             {
-                if (provincias.ProvCodigo == ProvCodigo)
+                if (modelos.ModCodigo == ModCodigo)
                 {
-                    context.Entry(provincias).State = EntityState.Modified;
+                    context.Entry(modelos).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetProvincias", new { ProvCodigo = provincias.ProvCodigo }, provincias);
+                    return CreatedAtRoute("GetModelos", new { ModCodigo = modelos.ModCodigo }, modelos);
                 }
                 else
                 {
@@ -87,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{ProvCodigo}")]
-        public ActionResult Delete(int ProvCodigo)
+        [HttpDelete("{ModCodigo}")]
+        public ActionResult Delete(int ModCodigo)
         {
             try
             {
-                var provincias = context.Provincias.FirstOrDefault(g => g.ProvCodigo == ProvCodigo);
-                if (provincias != null)
+                var modelos = context.Modelos.FirstOrDefault(g => g.ModCodigo == ModCodigo);
+                if (modelos != null)
                 {
-                    context.Provincias.Remove(provincias);
+                    context.Modelos.Remove(modelos);
                     context.SaveChanges();
-                    return Ok(ProvCodigo);
+                    return Ok(ModCodigo);
                 }
                 else
                 {
