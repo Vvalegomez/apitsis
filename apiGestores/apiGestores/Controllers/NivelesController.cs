@@ -12,10 +12,10 @@ namespace apiGestores.Controllers
 {
     [Route("api/[controller]")]
     
-    public class ProductosController : Controller
+    public class NivelesController : Controller
     {
         private readonly AppDbContext context;
-        public ProductosController(AppDbContext context)
+        public NivelesController(AppDbContext context)
         {
             this.context = context;
         }
@@ -26,7 +26,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                return Ok(context.Articulos.ToList());
+                return Ok(context.Niveles.ToList());
             }
             catch (Exception ex)
             {
@@ -35,13 +35,13 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{ArtCodigo}", Name = "GetProductos")]
-        public ActionResult Get(int ArtCodigo)
+        [HttpGet("{NivCodigo}", Name = "GetNiveles")]
+        public ActionResult Get(int NivCodigo)
         {
             try
             {
-                var productos = context.Articulos.FirstOrDefault(g => g.ArtCodigo == ArtCodigo);
-                return Ok(productos);
+                var niveles = context.Niveles.FirstOrDefault(g => g.NivCodigo == NivCodigo);
+                return Ok(niveles);
             }
             catch (Exception ex)
             {
@@ -51,13 +51,13 @@ namespace apiGestores.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        public ActionResult Post([FromBody] Articulos productos)
+        public ActionResult Post([FromBody] Niveles niveles)
         {
             try
             {
-                context.Articulos.Add(productos);
+                context.Niveles.Add(niveles);
                 context.SaveChanges();
-                return CreatedAtRoute("GetProductos", new { ArtCodigo = productos.ArtCodigo }, productos);
+                return CreatedAtRoute("GetNiveles", new { NivCodigo = niveles.NivCodigo }, niveles);
             }
             catch (Exception ex)
             {
@@ -66,16 +66,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{ArtCodigo}")]
-        public ActionResult Put(int ArtCodigo, [FromBody] Articulos productos)
+        [HttpPut("{NivCodigo}")]
+        public ActionResult Put(int NivCodigo, [FromBody] Niveles niveles)
         {
             try
             {
-                if (productos.ArtCodigo == ArtCodigo)
+                if (niveles.NivCodigo == NivCodigo)
                 {
-                    context.Entry(productos).State = EntityState.Modified;
+                    context.Entry(niveles).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetProductos", new { ArtCodigo = productos.ArtCodigo }, productos);
+                    return CreatedAtRoute("GetNiveles", new { NivCodigo = niveles.NivCodigo }, niveles);
                 }
                 else
                 {
@@ -89,17 +89,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{ArtCodigo}")]
-        public ActionResult Delete(int ArtCodigo)
+        [HttpDelete("{NivCodigo}")]
+        public ActionResult Delete(int NivCodigo)
         {
             try
             {
-                var productos = context.Articulos.FirstOrDefault(g => g.ArtCodigo == ArtCodigo);
-                if (productos != null)
+                var niveles = context.Niveles.FirstOrDefault(g => g.NivCodigo == NivCodigo);
+                if (niveles != null)
                 {
-                    context.Articulos.Remove(productos);
+                    context.Niveles.Remove(niveles);
                     context.SaveChanges();
-                    return Ok(ArtCodigo);
+                    return Ok(NivCodigo);
                 }
                 else
                 {
