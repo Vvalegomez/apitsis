@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace apiGestores.Controllers
 {
+    [Route("api/[controller]")]
     public class ProvinciasController : Controller
     {
         private readonly AppDbContext context;
