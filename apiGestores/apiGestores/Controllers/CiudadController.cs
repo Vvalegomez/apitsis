@@ -35,11 +35,11 @@ namespace apiGestores.Controllers
 
         // GET api/<controller>/5
         [HttpGet("{ciu_codigo}", Name = "GetCiudad")]
-        public ActionResult Get(int CiuCodigo)
+        public ActionResult Get(int ciu_codigo)
         {
             try
             {
-                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == CiuCodigo);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == ciu_codigo);
                 return Ok(ciudad);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace apiGestores.Controllers
             {
                 context.Ciudades.Add(ciudad);
                 context.SaveChanges();
-                return CreatedAtRoute("GetCiudad", new { CiuCodigo = ciudad.ciu_codigo }, ciudad);
+                return CreatedAtRoute("GetCiudad", new { ciu_codigo = ciudad.ciu_codigo }, ciudad);
             }
             catch (Exception ex)
             {
@@ -65,16 +65,16 @@ namespace apiGestores.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{CiuCodigo}")]
-        public ActionResult Put(int CiuCodigo, [FromBody] Ciudades ciudad)
+        [HttpPut("{ciu_codigo}")]
+        public ActionResult Put(int ciu_codigo, [FromBody] Ciudades ciudad)
         {
             try
             {
-                if (ciudad.ciu_codigo == CiuCodigo)
+                if (ciudad.ciu_codigo == ciu_codigo)
                 {
                     context.Entry(ciudad).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetGestor", new { CiuCodigo = ciudad.ciu_codigo }, ciudad);
+                    return CreatedAtRoute("GetGestor", new { ciu_codigo = ciudad.ciu_codigo }, ciudad);
                 }
                 else
                 {
@@ -88,17 +88,17 @@ namespace apiGestores.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{CiuCodigo}")]
-        public ActionResult Delete(int CiuCodigo)
+        [HttpDelete("{ciu_codigo}")]
+        public ActionResult Delete(int ciu_codigo)
         {
             try
             {
-                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == CiuCodigo);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == ciu_codigo);
                 if (ciudad != null)
                 {
                     context.Ciudades.Remove(ciudad);
                     context.SaveChanges();
-                    return Ok(CiuCodigo);
+                    return Ok(ciu_codigo);
                 }
                 else
                 {

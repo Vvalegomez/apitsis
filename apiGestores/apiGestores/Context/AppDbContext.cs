@@ -135,17 +135,17 @@ namespace apiGestores.Context
                     .HasColumnName("ciu_codigo")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.CiuDenom)
+                entity.Property(e => e.ciu_denom)
                     .IsRequired()
                     .HasColumnName("ciu_denom")
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ProvCodigo).HasColumnName("prov_codigo");
+                entity.Property(e => e.prov_codigo).HasColumnName("prov_codigo");
 
                 entity.HasOne(d => d.ProvCodigoNavigation)
                     .WithMany(p => p.Ciudades)
-                    .HasForeignKey(d => d.ProvCodigo)
+                    .HasForeignKey(d => d.prov_codigo)
                     .HasConstraintName("FK__Ciudades__prov_c__2B3F6F97");
             });
 

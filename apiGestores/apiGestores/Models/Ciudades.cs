@@ -14,8 +14,8 @@ namespace apiGestores.Models
 
         [Key]
         public int ciu_codigo { get; set; }
-        public string CiuDenom { get; set; }
-        public int? ProvCodigo { get; set; }
+        public string ciu_denom { get; set; }
+        public int? prov_codigo { get; set; }
 
         public virtual Provincias ProvCodigoNavigation { get; set; }
         public virtual ICollection<Cuentas> Cuentas { get; set; }
