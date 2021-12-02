@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20211124145425_V1.0.0.cs" />
+    <Compile Remove="Migrations\20211124145425_V1.0.0.Designer.cs" />
+    <Compile Remove="Migrations\20211202134726_v1.0.1.cs" />
+    <Compile Remove="Migrations\20211202134726_v1.0.1.Designer.cs" />
+    <Compile Remove="Migrations\20211202135228_v1.0.1.cs" />
+    <Compile Remove="Migrations\20211202135228_v1.0.1.Designer.cs" />
+    <Compile Remove="Migrations\20211202135851_inicial.cs" />
+    <Compile Remove="Migrations\20211202135851_inicial.Designer.cs" />
+    <Compile Remove="Migrations\20211202140057_inicial.cs" />
+    <Compile Remove="Migrations\20211202140057_inicial.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
       <PrivateAssets>all</PrivateAssets>

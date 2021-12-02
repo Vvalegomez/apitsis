@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace apiGestores.Migrations
 {
-    public partial class V100 : Migration
+    public partial class v100 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -425,7 +425,8 @@ namespace apiGestores.Migrations
                     fab_codigo = table.Column<int>(nullable: false),
                     suc_codigo = table.Column<int>(nullable: false),
                     prove_codigo = table.Column<int>(nullable: true),
-                    mod_codigo = table.Column<int>(nullable: true)
+                    mod_codigo = table.Column<int>(nullable: true),
+                    ArticulosArtCodigo = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -433,6 +434,12 @@ namespace apiGestores.Migrations
                     table.ForeignKey(
                         name: "FK__Articulos__mod_c__534D60F1",
                         column: x => x.art_codigo,
+                        principalTable: "Articulos",
+                        principalColumn: "art_codigo",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ArticulosDet_Articulos_ArticulosArtCodigo",
+                        column: x => x.ArticulosArtCodigo,
                         principalTable: "Articulos",
                         principalColumn: "art_codigo",
                         onDelete: ReferentialAction.Restrict);
@@ -492,6 +499,11 @@ namespace apiGestores.Migrations
                 name: "IX_Articulos_esta_codigo",
                 table: "Articulos",
                 column: "esta_codigo");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ArticulosDet_ArticulosArtCodigo",
+                table: "ArticulosDet",
+                column: "ArticulosArtCodigo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ArticulosDet_fab_codigo",

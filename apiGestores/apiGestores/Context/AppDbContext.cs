@@ -128,10 +128,10 @@ namespace apiGestores.Context
 
             modelBuilder.Entity<Ciudades>(entity =>
             {
-                entity.HasKey(e => e.CiuCodigo)
+                entity.HasKey(e => e.ciu_codigo)
                     .HasName("PK__Ciudades__740B50BC9C3E06CF");
 
-                entity.Property(e => e.CiuCodigo)
+                entity.Property(e => e.ciu_codigo)
                     .HasColumnName("ciu_codigo")
                     .ValueGeneratedNever();
 

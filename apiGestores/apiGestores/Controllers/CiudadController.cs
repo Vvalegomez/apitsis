@@ -34,12 +34,12 @@ namespace apiGestores.Controllers
         }
 
         // GET api/<controller>/5
-        [HttpGet("{CiuCodigo}", Name = "GetCiudad")]
+        [HttpGet("{ciu_codigo}", Name = "GetCiudad")]
         public ActionResult Get(int CiuCodigo)
         {
             try
             {
-                var ciudad = context.Ciudades.FirstOrDefault(g => g.CiuCodigo == CiuCodigo);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == CiuCodigo);
                 return Ok(ciudad);
             }
             catch (Exception ex)
@@ -56,7 +56,7 @@ namespace apiGestores.Controllers
             {
                 context.Ciudades.Add(ciudad);
                 context.SaveChanges();
-                return CreatedAtRoute("GetCiudad", new { CiuCodigo = ciudad.CiuCodigo }, ciudad);
+                return CreatedAtRoute("GetCiudad", new { CiuCodigo = ciudad.ciu_codigo }, ciudad);
             }
             catch (Exception ex)
             {
@@ -70,11 +70,11 @@ namespace apiGestores.Controllers
         {
             try
             {
-                if (ciudad.CiuCodigo == CiuCodigo)
+                if (ciudad.ciu_codigo == CiuCodigo)
                 {
                     context.Entry(ciudad).State = EntityState.Modified;
                     context.SaveChanges();
-                    return CreatedAtRoute("GetGestor", new { CiuCodigo = ciudad.CiuCodigo }, ciudad);
+                    return CreatedAtRoute("GetGestor", new { CiuCodigo = ciudad.ciu_codigo }, ciudad);
                 }
                 else
                 {
@@ -93,7 +93,7 @@ namespace apiGestores.Controllers
         {
             try
             {
-                var ciudad = context.Ciudades.FirstOrDefault(g => g.CiuCodigo == CiuCodigo);
+                var ciudad = context.Ciudades.FirstOrDefault(g => g.ciu_codigo == CiuCodigo);
                 if (ciudad != null)
                 {
                     context.Ciudades.Remove(ciudad);

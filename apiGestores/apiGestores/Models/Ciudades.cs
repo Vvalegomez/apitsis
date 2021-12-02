@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace apiGestores.Models
 {
@@ -11,7 +12,8 @@ namespace apiGestores.Models
             Proveedores = new HashSet<Proveedores>();
         }
 
-        public int CiuCodigo { get; set; }
+        [Key]
+        public int ciu_codigo { get; set; }
         public string CiuDenom { get; set; }
         public int? ProvCodigo { get; set; }
 
