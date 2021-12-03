@@ -133,7 +133,7 @@ namespace apiGestores.Context
 
                 entity.Property(e => e.ciu_codigo)
                     .HasColumnName("ciu_codigo")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.ciu_denom)
                     .IsRequired()
