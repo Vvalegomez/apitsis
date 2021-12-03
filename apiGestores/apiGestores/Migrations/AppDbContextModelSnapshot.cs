@@ -60,6 +60,9 @@ namespace apiGestores.Migrations
                         .HasColumnName("art_precio")
                         .HasColumnType("int");
 
+                    b.Property<int?>("ArticulosArtCodigo")
+                        .HasColumnType("int");
+
                     b.Property<int>("FabCodigo")
                         .HasColumnName("fab_codigo")
                         .HasColumnType("int");
@@ -78,6 +81,8 @@ namespace apiGestores.Migrations
 
                     b.HasKey("ArtCodigo")
                         .HasName("PK__Articulo__D09E5E0378603750");
+
+                    b.HasIndex("ArticulosArtCodigo");
 
                     b.HasIndex("FabCodigo");
 
@@ -695,6 +700,10 @@ namespace apiGestores.Migrations
                         .HasForeignKey("apiGestores.Models.ArticulosDet", "ArtCodigo")
                         .HasConstraintName("FK__Articulos__mod_c__534D60F1")
                         .IsRequired();
+
+                    b.HasOne("apiGestores.Models.Articulos", null)
+                        .WithMany("lista")
+                        .HasForeignKey("ArticulosArtCodigo");
 
                     b.HasOne("apiGestores.Models.Fabricantes", "FabCodigoNavigation")
                         .WithMany("ArticulosDet")

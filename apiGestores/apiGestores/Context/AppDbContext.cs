@@ -128,24 +128,24 @@ namespace apiGestores.Context
 
             modelBuilder.Entity<Ciudades>(entity =>
             {
-                entity.HasKey(e => e.CiuCodigo)
+                entity.HasKey(e => e.ciu_codigo)
                     .HasName("PK__Ciudades__740B50BC9C3E06CF");
 
-                entity.Property(e => e.CiuCodigo)
+                entity.Property(e => e.ciu_codigo)
                     .HasColumnName("ciu_codigo")
-                    .ValueGeneratedNever();
+                    .ValueGeneratedOnAdd();
 
-                entity.Property(e => e.CiuDenom)
+                entity.Property(e => e.ciu_denom)
                     .IsRequired()
                     .HasColumnName("ciu_denom")
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.ProvCodigo).HasColumnName("prov_codigo");
+                entity.Property(e => e.prov_codigo).HasColumnName("prov_codigo");
 
                 entity.HasOne(d => d.ProvCodigoNavigation)
                     .WithMany(p => p.Ciudades)
-                    .HasForeignKey(d => d.ProvCodigo)
+                    .HasForeignKey(d => d.prov_codigo)
                     .HasConstraintName("FK__Ciudades__prov_c__2B3F6F97");
             });
 
