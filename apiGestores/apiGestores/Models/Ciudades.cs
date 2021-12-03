@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-//using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace apiGestores.Models
 {
@@ -13,7 +13,7 @@ namespace apiGestores.Models
             Proveedores = new HashSet<Proveedores>();
         }
 
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int ciu_codigo { get; set; }
         public string ciu_denom { get; set; }
